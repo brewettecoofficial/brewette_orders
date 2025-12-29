@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brewette</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Brewette</h1>
+    <p class="tagline">Strong coffee. Small menu. No nonsense.</p>
+  </section>
+
+  <!-- ORDER -->
+  <section class="order">
+    <h2>Order</h2>
+
+    <div class="order-item" data-item="Iced White Chocolate Mocha">
+      <span>Iced White Chocolate Mocha</span>
+      <div class="qty-control">
+        <button onclick="updateQty('Iced White Chocolate Mocha', -1)">−</button>
+        <span id="qty-Iced White Chocolate Mocha">0</span>
+        <button onclick="updateQty('Iced White Chocolate Mocha', 1)">+</button>
+      </div>
+    </div>
+
+    <div class="order-item" data-item="Iced Nuts About You">
+      <span>Iced Nuts About You</span>
+      <div class="qty-control">
+        <button onclick="updateQty('Iced Nuts About You', -1)">−</button>
+        <span id="qty-Iced Nuts About You">0</span>
+        <button onclick="updateQty('Iced Nuts About You', 1)">+</button>
+      </div>
+    </div>
+
+    <div class="order-item" data-item="Milk Coffee">
+      <span>Milk Coffee</span>
+      <div class="qty-control">
+        <button onclick="updateQty('Milk Coffee', -1)">−</button>
+        <span id="qty-Milk Coffee">0</span>
+        <button onclick="updateQty('Milk Coffee', 1)">+</button>
+      </div>
+    </div>
+
+    <button class="btn" onclick="submitOrder()">Place Order</button>
+  </section>
+
+  <footer>
+    <p>© Brewette</p>
+  </footer>
+
+</main>
+
+<!-- Sticky mobile CTA -->
+<div class="mobile-bar">
+  <button class="btn" onclick="submitOrder()">Order Now</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
