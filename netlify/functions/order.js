@@ -9,19 +9,17 @@ export async function handler(event) {
     return { statusCode: 400, body: "Invalid order" };
   }
 
-  const lines = items.map(
-    item => `${item.qty} × ${item.name}`
-  ).join("\n");
+  // 🔁 PASTE YOUR GOOGLE SCRIPT URL HERE
+  const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwn60HW0B_WzVpwYLmgaXB9Anacha-ym8EyCYrDIzHqejmmW0KCa9HOBJ5Ve9hRikBibA/exec";
 
-  const message = encodeURIComponent(
-    `Hi Brewette! I'd like to order:\n${lines}`
-  );
-
-  const whatsappNumber = "918331809508"; // replace
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+  await fetch(SHEET_WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ items })
+  });
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ whatsappUrl })
+    body: JSON.stringify({ status: "saved" })
   };
 }
