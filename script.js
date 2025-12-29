@@ -16,6 +16,15 @@ function updateQty(item, change) {
 }
 
 async function submitOrder() {
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const address = document.getElementById("customerAddress").value.trim();
+
+  if (!name || !phone || !address) {
+    alert("Please fill in all details.");
+    return;
+  }
+
   const items = Object.entries(order)
     .filter(([_, qty]) => qty > 0)
     .map(([name, qty]) => ({ name, qty }));
@@ -29,13 +38,17 @@ async function submitOrder() {
     const res = await fetch("/.netlify/functions/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items })
+      body: JSON.stringify({
+        customer: { name, phone, address },
+        items
+      })
     });
 
     const data = await res.json();
+
     alert("Order received! We’ll get started shortly.");
 
   } catch {
-    alert("Something went wrong. Try again.");
+    alert("Something went wrong. Please try again.");
   }
 }
