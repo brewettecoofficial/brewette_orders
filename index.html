@@ -6,8 +6,8 @@
   <title>Brewette</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
 
+<body>
 <main class="container">
 
   <!-- HERO -->
@@ -17,108 +17,79 @@
   </section>
 
   <!-- CUSTOMER DETAILS -->
-
-  <h2>Ordering for</h2> <br>
+  <h2>Ordering for</h2><br>
 
   <div class="customer-fields">
-  <input 
-    type="text" 
-    id="customerName" 
-    placeholder="Your name" 
-    required 
-  />
-
-  <input 
-    type="tel" 
-    id="customerPhone" 
-    placeholder="Phone number" 
-    required 
-  />
-
-  <textarea 
-    id="customerAddress" 
-    placeholder="Delivery address" 
-    rows="3"
-    required
-  ></textarea>
+    <input type="text" id="customerName" placeholder="Your name" required />
+    <input type="tel" id="customerPhone" placeholder="Phone number" required />
+    <textarea id="customerAddress" placeholder="Delivery address" rows="3" required></textarea>
   </div>
 
   <!-- ORDER -->
   <section class="order">
     <h2>What are you sipping today?</h2>
 
-    <div class="order-item" data-item="Iced White Chocolate Mocha">
+    <!-- ITEM 1 -->
+    <div class="order-item">
       <span>Iced White Chocolate Mocha</span>
       <div class="qty-control">
         <button onclick="updateQty('Iced White Chocolate Mocha', -1)">−</button>
-        <span id="qty-Iced White Chocolate Mocha">0</span>
+        <span id="qty-Iced-White-Chocolate-Mocha">0</span>
         <button onclick="updateQty('Iced White Chocolate Mocha', 1)">+</button>
       </div>
     </div>
 
-    <div class="order-item" data-item="Iced Nuts About You">
+    <!-- ITEM 2 -->
+    <div class="order-item">
       <span>Iced Nuts About You</span>
       <div class="qty-control">
         <button onclick="updateQty('Iced Nuts About You', -1)">−</button>
-        <span id="qty-Iced Nuts About You">0</span>
+        <span id="qty-Iced-Nuts-About-You">0</span>
         <button onclick="updateQty('Iced Nuts About You', 1)">+</button>
       </div>
     </div>
 
-    <div class="order-item" data-item="Milk Coffee">
+    <!-- ITEM 3 -->
+    <div class="order-item">
       <span>Milk Coffee</span>
       <div class="qty-control">
         <button onclick="updateQty('Milk Coffee', -1)">−</button>
-        <span id="qty-Milk Coffee">0</span>
+        <span id="qty-Milk-Coffee">0</span>
         <button onclick="updateQty('Milk Coffee', 1)">+</button>
       </div>
     </div>
 
-  <div class="order-total">
-    <span>Total</span>
-    <span id="totalAmount">₹0</span>
-  </div>
+    <!-- TOTAL -->
+    <div class="order-total">
+      <span>Total</span>
+      <span id="totalAmount">₹0</span>
+    </div>
+  </section>
 
+  <!-- PAYMENT -->
   <section class="payment">
-  <h2>Payment</h2>
+    <h2>Payment</h2>
 
-  <img 
-    src="gpay-qr.png" 
-    alt="Pay via Google Pay" 
-    class="gpay-qr"
-  />
-<!--
-  <a id="gpayOnly"
-   href="intent://pay?pa=apoorvak999@oksbi&pn=Apoorva Korabondy&am=299&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end"
-   target="_blank" rel="noopener"> Pay with Google Pay </a> <br> -->
-    
-  <a href="upi://pay?pa=apoorvak999@oksbi&pn=Apoorva Korabondy&am=299&cu=INR"
-   > Copy UPI ID </a>
+    <img src="gpay-qr.png" alt="Pay via UPI" class="gpay-qr"/>
 
-  <p class="payment-note"> Please ensure your payment is completed before placing your order. <br> <br> </p>
+    <a href="upi://pay?pa=apoorvak999@oksbi&pn=Apoorva%20Korabondy&cu=INR">
+      Copy UPI ID
+    </a>
+
+    <p class="payment-note">
+      Please ensure your payment is completed before placing your order.
+    </p>
   </section>
-    
+
+  <!-- SUBMIT -->
   <button class="btn" onclick="submitOrder()">Place Order</button>
-  </section>
 
   <footer>
-    <br> <br> <p>:)</p>
+    <br><br><p>:)</p>
   </footer>
 
 </main>
 
 <script src="script.js"></script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
