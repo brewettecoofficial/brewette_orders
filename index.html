@@ -1,95 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Brewette</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-<main class="container">
+  <main class="container">
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Brewette</h1>
-    <p class="tagline">Your daily sip.</p>
-  </section>
+    <!-- HERO -->
+    <header class="hero">
+      <h1 class="brand">Brewette</h1>
+      <p class="tagline">Your daily sip.</p>
+    </header>
 
-  <!-- CUSTOMER DETAILS -->
-  <h2>Ordering for</h2><br>
+    <!-- CUSTOMER DETAILS -->
+    <section class="card">
+      <h2>Ordering for</h2>
 
-  <div class="customer-fields">
-    <input type="text" id="customerName" placeholder="Your name" required />
-    <input type="tel" id="customerPhone" placeholder="Phone number" required />
-    <textarea id="customerAddress" placeholder="Delivery address" rows="3" required></textarea>
-  </div>
-
-  <!-- ORDER -->
-  <section class="order">
-    <h2>What are you sipping today?</h2>
-
-    <!-- ITEM 1 -->
-    <div class="order-item">
-      <span>Iced White Chocolate Mocha</span>
-      <div class="qty-control">
-        <button onclick="updateQty('Iced White Chocolate Mocha', -1)">−</button>
-        <span id="qty-Iced-White-Chocolate-Mocha">0</span>
-        <button onclick="updateQty('Iced White Chocolate Mocha', 1)">+</button>
+      <div class="fields">
+        <input id="customerName" type="text" placeholder="Your name" autocomplete="name" />
+        <input id="customerPhone" type="tel" placeholder="Phone number" autocomplete="tel" />
+        <textarea id="customerAddress" rows="3" placeholder="Delivery address"></textarea>
       </div>
-    </div>
+    </section>
 
-    <!-- ITEM 2 -->
-    <div class="order-item">
-      <span>Iced Nuts About You</span>
-      <div class="qty-control">
-        <button onclick="updateQty('Iced Nuts About You', -1)">−</button>
-        <span id="qty-Iced-Nuts-About-You">0</span>
-        <button onclick="updateQty('Iced Nuts About You', 1)">+</button>
-      </div>
-    </div>
+    <!-- MENU -->
+    <section class="card">
+      <h2>What are you sipping today?</h2>
 
-    <!-- ITEM 3 -->
-    <div class="order-item">
-      <span>Milk Coffee</span>
-      <div class="qty-control">
-        <button onclick="updateQty('Milk Coffee', -1)">−</button>
-        <span id="qty-Milk-Coffee">0</span>
-        <button onclick="updateQty('Milk Coffee', 1)">+</button>
-      </div>
-    </div>
+      <div class="menu">
 
-    <!-- TOTAL -->
-    <div class="order-total">
-      <span>Total</span>
-      <span id="totalAmount">₹0</span>
-    </div>
-  </section>
+        <div class="menu-row">
+          <div class="menu-left">
+            <div class="item-name">Coconut Kiss (Hot)</div>
+            <div class="item-sub">₹290</div>
+          </div>
 
-  <!-- PAYMENT -->
-  <section class="payment">
-    <h2>Payment</h2>
+          <div class="stepper" aria-label="Coconut Kiss quantity">
+            <button class="stepper-btn" data-item="coconut_hot" data-change="-1" type="button">−</button>
+            <div class="stepper-qty" id="qty-coconut_hot">0</div>
+            <button class="stepper-btn" data-item="coconut_hot" data-change="1" type="button">+</button>
+          </div>
+        </div>
 
-    <img src="gpay-qr.png" alt="Pay via UPI" class="gpay-qr"/>
-
-    <a href="upi://pay?pa=apoorvak999@oksbi&pn=Apoorva%20Korabondy&cu=INR">
-      Copy UPI ID
-    </a>
-
-    <p class="payment-note">
-      Please ensure your payment is completed before placing your order.
-    </p>
-  </section>
-
-  <!-- SUBMIT -->
-  <button class="btn" onclick="submitOrder()">Place Order</button>
-
-  <footer>
-    <br><br><p>:)</p>
-  </footer>
-
-</main>
-
-<script src="script.js"></script>
-</body>
-</html>
+        <div class="menu-row">
+          <div class="menu-left">
+            <div class="item-name">Hot Pour Over</div>
+            <div class="item-sub">₹270</div>
+          </div>
