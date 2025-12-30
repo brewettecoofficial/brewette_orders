@@ -12,7 +12,7 @@ const UPI_ID = "apoorvak999@oksbi";
 const PAYEE_NAME = "Apoorva Korabondy";
 
 // Paste your Apps Script Web App URL here (Deploy -> Web app -> copy URL)
-const SHEET_WEBHOOK_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwjx4taFxEhhBdMwfYdrnCXmi_aL-lONoM_hUtqEnKI8tG9Bbc71eG8uXTnZMmbw0g/exec";
 
 // Delivery fee (flat)
 const DELIVERY_FEE = 179;
@@ -169,3 +169,4 @@ async function submitOrder() {
 
 // Initial render
 render();
+
