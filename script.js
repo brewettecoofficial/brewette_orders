@@ -1,6 +1,5 @@
 const MAX_QTY = 5;
 
-// Store order state
 const PRICES = {
   "Iced White Chocolate Mocha": 220,
   "Iced Nuts About You": 210,
@@ -13,15 +12,29 @@ let order = {
   "Milk Coffee": 0
 };
 
+function safeId(item) {
+  return item.replace(/\s+/g, "-");
+}
+
 function updateQty(item, change) {
   order[item] += change;
 
   if (order[item] < 0) order[item] = 0;
-  if (order[item] > 5) order[item] = 5;
+  if (order[item] > MAX_QTY) order[item] = MAX_QTY;
 
-  document.getElementById(`qty-${item}`).innerText = order[item];
+  document.getElementById(`qty-${safeId(item)}`).innerText = order[item];
+  calculateTotal();
+}
 
-  calculateTotal(); // 👈 IMPORTANT
+function calculateTotal() {
+  let total = 0;
+
+  for (const item in order) {
+    total += order[item] * PRICES[item];
+  }
+
+  document.getElementById("totalAmount").innerText = `₹${total}`;
+  return total;
 }
 
 async function submitOrder() {
@@ -33,6 +46,8 @@ async function submitOrder() {
     alert("Please fill in all details.");
     return;
   }
+
+  const customer = { name, phone, address };
 
   const items = Object.entries(order)
     .filter(([_, qty]) => qty > 0)
@@ -51,23 +66,15 @@ async function submitOrder() {
 
   fetch("https://script.google.com/macros/s/AKfycbx7wGkwEjAqOtNb-bhXa2PahXbjWLG1oJMUL6uFAZ5oNeB1vt0Sx4ZmiXYNKut0-ZjIdg/exec", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({customer, items, totalAmount })
-    })
-    .then(() => {console.log("Saved to sheet");})
-    .catch(err => {console.error("Sheet error", err);});
-
-function calculateTotal() {
-  let total = 0;
-
-  for (const item in order) {
-    total += order[item] * PRICES[item];
-  }
-
-  document.getElementById("totalAmount").innerText = `₹${total}`;
-  return total;
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ customer, items, totalAmount })
+  })
+  .then(() => {
+    console.log("Saved to sheet");
+    alert("Order placed successfully!");
+  })
+  .catch(err => {
+    console.error("Sheet error", err);
+    alert("Something went wrong. Please try again.");
+  });
 }
-
-
-
-
